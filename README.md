@@ -6,13 +6,47 @@ In this project we are implementing the concept of a traffic light system simula
 
 <img width="941" height="595" alt="image" src="https://github.com/user-attachments/assets/ce395054-ea21-46b0-bf18-275de4caea6e" />
 
-# input mapping
+## The rule for this traffic light system is as follows:
+
+1. If no cars are coming, stay in green light
+2. If cars are only coming in 1 direction, move to that direction and stay in green
+3. If cars are coming in both directions, cycle through the Light on each side (Red-Green-Yellow-Red)
+4. To change from green to red, turn on yellow light for exactly 5 seconds
+5. Green light should last for at least 30 seconds
+    
+---    
+## In this case we can translate the requirements into a Finite State Machine (FSM) as follows:  
+
+   | FSM      |Description                                    |
+   | ---------|-----------------------------------------------|
+   |go_north  |Red Light at East and Green Light at North|
+   |wait_north|Red Light at East and Yellow Light at North|
+   |go_east   |Green Light at East and Red Light at North|
+   |wait_east |Yellow Light at East and Red Light at North|
+
+## Input Mapping
+
+PC0 : East car sensor\
+PC1 : North car sensor
+
 | PC0 | PC1 |    Meaning             |
 | --- | ----|----------------------- |
 |  0  |  0  | No car on either road  |
-|  0  |  1  | Car detected on east road  |
-|  1  |  0  | Car detected on west road  |
+|  0  |  1  | Car detected on north road  |
+|  1  |  0  | Car detected on east road  |
 |  1  |  1  | Car detected on both side  |
 
-PC0 : East car sensor
-PC1 : West car sensor
+## FSM Diagram
+
+
+
+
+
+## Output and FSM Mapping
+
+| FSM | PC9 | PC8 | PC7 | PC6 | PC5 | PC4 |HEX for GPIO Port|Description|
+| --- | - | --- | --- | --- | --- | --- |---|-|
+|go_north  | 1 | 0 | 0 | 0 | 0 | 1|0x210|Red Light at East and Green Light at North|
+|wait_north| 1 | 0 | 0 | 0 | 1 | 0|0x220|Red Light at East and Yellow Light at North|
+|go_east   | 0 | 0 | 1 | 1 | 0 | 0|0x0C0|Green Light at East and Red Light at North|
+|wait_east | 0 | 1 | 0 | 1 | 0 | 0|0x140|Yellow Light at East and Red Light at North|
