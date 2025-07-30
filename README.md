@@ -58,3 +58,5 @@ PC1 : North car sensor
 |go_east   | 0 | 0 | 1 | 1 | 0 | 0|0x0C0|Green Light at East and Red Light at North|
 |wait_east | 0 | 1 | 0 | 1 | 0 | 0|0x140|Yellow Light at East and Red Light at North|
 
+## Code Flow
+At first the code will start at **go_north** state machine, then it will continuously scanning the input of the sensor (PC0 and PC1). Based on the Output and FSM Mapping table, the state machine and LED output will be driven accordingly. The 30 second and 5 second delay during green and yellow light is handled by the Systick register of the Cortex M4  
