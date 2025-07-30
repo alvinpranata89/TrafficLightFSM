@@ -38,9 +38,16 @@ PC1 : North car sensor
 
 ## FSM Diagram
 
+<img width="911" height="340" alt="image" src="https://github.com/user-attachments/assets/f572c6ce-a196-49ce-9681-57c1e51bc8fe" />
 
 
-
+| |PC1,PC0|PC1,PC0|PC1,PC0|PC1,PC0|
+|-|-|-|-|-|
+|State|00|01|10|11|
+|go_north(100001,30)|go_north|wait_north|go_north|wait_north|
+|wait_north(100010,5)|go_east|go_east|go_east|go_east
+|go_east(001100,30)|go_east|go_east|wait_east|wait_east|
+|wait_east(010100,5)|go_north|go_north|go_north|go_north|
 
 ## Output and FSM Mapping
 
@@ -50,3 +57,4 @@ PC1 : North car sensor
 |wait_north| 1 | 0 | 0 | 0 | 1 | 0|0x220|Red Light at East and Yellow Light at North|
 |go_east   | 0 | 0 | 1 | 1 | 0 | 0|0x0C0|Green Light at East and Red Light at North|
 |wait_east | 0 | 1 | 0 | 1 | 0 | 0|0x140|Yellow Light at East and Red Light at North|
+
