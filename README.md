@@ -1,6 +1,6 @@
 # TrafficLightFSM
 
-This is what I have learned from one of the embedded system course from EmbeddedExpertIO regarding Finite State Machine (FSM) implementation on STM32 microcontroller using Nucleo F401RE board. The coding is in bare metal style, so I did not use HAL library to configure the pin. All is done manually bit by bit using CMSIS and the provided datasheet, reference manual, and Cortx M4 processor user guide. This project is built using STM32CubeIDE
+This is what I have learned from one of the embedded system course from EmbeddedExpertIO regarding Finite State Machine (FSM) implementation on STM32 microcontroller using Nucleo F401RE board. The coding is in bare metal style, so I did not use HAL library to configure the pin. All is done manually bit by bit using CMSIS and the provided datasheet, reference manual, and Cortex M4 processor user guide. This project is built using STM32CubeIDE
 
 In this project we are implementing the concept of a traffic light system simulation based on 2 presence sensors connected to PC0 and PC1 as the input, and 6 LEDs connected to PA4-PA9 representing 2 traffic lights at an intersection as the output. 
 
